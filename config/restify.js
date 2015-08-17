@@ -6,23 +6,33 @@ var restify=require('restify'),
   Promises=require('bluebird'),
   controllersPath=require('path').join(__dirname,'../app/controllers');
 
+function authorizeRedirectUrl(req,res,done){
+  var scope=req.authInfo.scope;
+  if(scope.indexOf(req.headers.host)===-1 || scope.indexOf(req.url)===-1){
+    res.send(401,'Unauthorized');
+  }
+  done();
+}
+
 function initialize(options){
+  options=options || {};
   function initializePromise(resolve,reject){
     var server=restify.createServer({name:'Roshambo'}),
       promises=[];
     server.use(restify.queryParser());
     server.use(restify.bodyParser());
+    server.use(options.passport.authenticate('accessToken',{session:false}));
+    server.use(authorizeRedirectUrl);
+    options.server=server;
     fs.readdirSync(controllersPath)
       .forEach(function(controllerName) {
         var controller=require('../app/controllers/'+controllerName);
-        promises.push(controller.initialize(
-          {collections:options.collections,server:server}));
+        promises.push(controller.initialize(options));
       });
     Promises.all(promises)
       .then(function(){
         server.listen(8080,function(){
           console.log('%s listening at %s', server.name, server.url);
-          options.server=server;
           return resolve(options);
         });
       })

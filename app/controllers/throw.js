@@ -5,7 +5,7 @@ var machine=require('./../machine'),
   collections=void 0;
 
 function shoot(options){
-  return collections.Throw.create(options.thro)
+  return collections.throw.create(options.thro)
     .then(function(thro){
       return {thro:thro};
     })
@@ -27,7 +27,7 @@ function head(req,res){
 }
 
 function getThrows(req,res,next){
-  collections.Throw
+  collections.throw
     .find({where:{},sort:'createdAt ASC'})
     .then(function(throws){
       res.send(throws);
@@ -54,8 +54,8 @@ function postThrow(req,res,next){
 function initialize(options){
   options=options || {};
   function initializePromise(resolve,reject){
-    if(!options.collections || !options.collections.Throw){
-      reject(new Error('Could not find Throw collection.'));
+    if(!options.collections || !options.collections.throw){
+      reject(new Error('Could not find throw collection.'));
     }
     collections=options.collections;
     if(options.server){

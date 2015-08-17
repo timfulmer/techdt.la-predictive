@@ -34,10 +34,7 @@ function initialize(options) {
         if(err){
           return reject(err);
         }
-        _.forEach(schemas,function(schema){
-          collections[_.capitalize(schema)]=models.collections[schema];
-        });
-        options.collections=collections;
+        options.collections=models.collections;
         return resolve(options);
       });
     }
