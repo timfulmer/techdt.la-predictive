@@ -58,6 +58,8 @@ function initialize(options){
       reject(new Error('Could not find throw collection.'));
     }
     collections=options.collections;
+    // Please Note: options.server may be null if you want to initialize
+    //   without a server.
     if(options.server){
       options.server.head('/api/throw',head);
       options.server.get('/api/throw',getThrows);
