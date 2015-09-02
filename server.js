@@ -5,10 +5,9 @@ var restify=require('./config/restify'),
   waterline=require('./config/waterline'),
   passport=require('./config/passport');
 
-waterline
-  .initialize()
-  .then(passport.initialize)
-  .then(restify.initialize)
+waterline()
+  .then(passport)
+  .then(restify)
   .catch(function(err){
     console.log('Caught error running server:\n%s.',err.stack);
     process.exit(-1);

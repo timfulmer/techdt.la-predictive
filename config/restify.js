@@ -21,13 +21,14 @@ function initialize(options){
       promises=[];
     server.use(restify.queryParser());
     server.use(restify.bodyParser());
-    server.use(options.passport.authenticate('accessToken',{session:false}));
-    server.use(authorizeRedirectUrl);
+    if(options.authorize){
+      server.use(options.passport.authenticate('accessToken',{session:false}));
+      server.use(authorizeRedirectUrl);
+    }
     options.server=server;
     fs.readdirSync(controllersPath)
       .forEach(function(controllerName) {
-        var controller=require('../app/controllers/'+controllerName);
-        promises.push(controller.initialize(options));
+        promises.push(require('../app/controllers/'+controllerName)(options));
       });
     Promises.all(promises)
       .then(function(){
@@ -43,6 +44,4 @@ function initialize(options){
   return new Promise(initializePromise);
 }
 
-module.exports={
-  initialize:initialize
-};
+module.exports=initialize;

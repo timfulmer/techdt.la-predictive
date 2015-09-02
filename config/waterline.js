@@ -26,8 +26,7 @@ function initialize(options) {
         collections={};
       fs.readdirSync(modelsPath)
         .forEach(function(schemaName) {
-          var schema=require('../app/models/'+schemaName);
-          schema.loadCollection({waterline:Waterline,orm:orm});
+          require('../app/models/'+schemaName)({waterline:Waterline,orm:orm});
           schemas.push(schemaName.split('.')[0]);
         });
       orm.initialize(config,function(err,models){
@@ -43,6 +42,4 @@ function initialize(options) {
   return _initializePromise;
 }
 
-module.exports={
-  initialize:initialize
-};
+module.exports=initialize;

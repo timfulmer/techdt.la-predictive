@@ -56,6 +56,4 @@ function initialize(options){
   return new Promise(initializePromise);
 }
 
-module.exports={
-  initialize:initialize
-};
+module.exports=initialize;

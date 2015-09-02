@@ -75,6 +75,4 @@ function loadCollection(options){
   );
 }
 
-module.exports={
-  loadCollection:loadCollection
-};
+module.exports=loadCollection;

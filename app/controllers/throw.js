@@ -69,8 +69,6 @@ function initialize(options){
   }
   return new Promise(initializePromise);
 }
+initialize.shoot=shoot;
 
-module.exports={
-  initialize:initialize,
-  shoot:shoot
-};
+module.exports=initialize;
