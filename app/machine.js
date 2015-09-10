@@ -75,7 +75,7 @@ function shoot(options){
   return randomShot(options)
     .then(machineShot)
     .then(function(options){
-      if(options.Prediction.predictedScores[options.Prediction.predictedLabel]>0.55){
+      if(options.Prediction && options.Prediction.predictedScores[options.Prediction.predictedLabel]>0.55){
         options.thro.opponentThrow=options.machineOpponentThrow;
       }else{
         options.thro.opponentThrow=options.randomOpponentThrow;

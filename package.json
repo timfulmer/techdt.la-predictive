@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "mocha"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,8 @@
   "dependencies": {
     "aws-sdk": "^2.1.36",
     "bluebird": "^2.9.32",
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
     "lodash": "^3.10.0",
     "passport": "^0.2.2",
     "passport-http": "^0.3.0",

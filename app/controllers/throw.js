@@ -40,6 +40,9 @@ function getThrows(req,res,next){
 }
 
 function postThrow(req,res,next){
+  if(req.body.playerThrow){
+    req.body.playerThrow=req.body.playerThrow.toLowerCase();
+  }
   shoot({thro:req.body})
     .then(function(options){
       res.send(options.thro);
