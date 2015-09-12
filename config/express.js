@@ -29,7 +29,7 @@ function initialize(options){
     fs.readdirSync(controllersPath)
       .forEach(function(controllerName) {
         var controller=require('../app/controllers/'+controllerName);
-        promises.push(controller.initialize(options));
+        promises.push(controller(options));
       });
     Promise.all(promises)
       .then(function(){
@@ -47,6 +47,4 @@ function initialize(options){
   return new Promise(initializePromise);
 }
 
-module.exports={
-  initialize:initialize
-};
+module.exports=initialize;

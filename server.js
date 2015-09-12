@@ -4,11 +4,8 @@
 var express=require('./config/express'),
   waterline=require('./config/waterline');
 
-waterline
-  .initialize()
-  .then(function(options){
-    return express.initialize(options);
-  })
+waterline()
+  .then(express)
   .catch(function(err){
     console.log('Caught error running server:\n%s.',err.stack);
     process.exit(-1);

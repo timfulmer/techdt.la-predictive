@@ -6,13 +6,17 @@ var Waterline=require('waterline'),
   mongoAdapter=require('sails-mongo'),
   Promise=require('bluebird'),
   fs=require('fs'),
-  _=require('lodash'),
   modelsPath=require('path').join(__dirname,'../app/models'),
   config={
     adapters:{default:mongoAdapter,mongo:mongoAdapter},
     connections:{
       localhostMongo:{
-        adapter: 'mongo',host: 'localhost',port: 27017,database: 'test'
+        adapter:'mongo',
+        host:'ds035573.mongolab.com',
+        port:35573,
+        user:'jswla',
+        password:'jswla',
+        database:'jswla'
       }
     }
   },
@@ -22,12 +26,9 @@ function initialize(options) {
   options=options || {};
   if(!_initializePromise){
     function initializePromise(resolve,reject){
-      var schemas=[],
-        collections={};
       fs.readdirSync(modelsPath)
         .forEach(function(schemaName) {
           require('../app/models/'+schemaName)({waterline:Waterline,orm:orm});
-          schemas.push(schemaName.split('.')[0]);
         });
       orm.initialize(config,function(err,models){
         if(err){
