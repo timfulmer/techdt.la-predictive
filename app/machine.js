@@ -3,9 +3,11 @@
  */
 var Promise=require('bluebird'),
   AWS=require('aws-sdk'),
-  machineLearning=new AWS.MachineLearning({region: 'us-east-1'}),
   _=require('lodash'),
   throws=[];
+
+AWS.config.update({accessKeyId: 'AKIAJVRC4TED7SIKUTYQ', secretAccessKey: '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'});
+var machineLearning=new AWS.MachineLearning({region: 'us-east-1'});
 
 /**
  * From http://stackoverflow.com/questions/1527803/generating-random-numbers-in-javascript-in-a-specific-range
