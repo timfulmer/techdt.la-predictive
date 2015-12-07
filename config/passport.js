@@ -30,6 +30,8 @@ function initialize(options){
               try{
                 var authorization=JSON.parse(contents);
                 if(authorization && authorization.authorized){
+                  // TODO: Hash the access token to make a session id.
+                  authorization.user.session=accessToken;
                   return done(null,authorization.user,authorization.info);
                 }
               }catch(err){

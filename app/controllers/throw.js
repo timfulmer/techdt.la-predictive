@@ -1,7 +1,9 @@
+"use strict";
 /**
  * Created by timfulmer on 7/4/15.
  */
 var machine=require('./../machine'),
+  stats=require('./../stats'),
   collections=void 0;
 
 function shoot(options){
@@ -13,12 +15,12 @@ function shoot(options){
     .then(function(options){
       return options.thro.renderJudgement(options);
     })
-    .then(function(options){
-      return options.thro.save()
-        .then(function(thro){
-          options.thro=thro;
-          return options;
-        })
+    .then(function(options) {
+      return options.thro.save();
+    })
+    .then(function(thro){
+      options.thro=thro;
+      return options;
     });
 }
 
@@ -26,24 +28,27 @@ function head(req,res){
   return res.send(200);
 }
 
-function getThrows(req,res,next){
-  collections.throw
-    .find({where:{},sort:'createdAt ASC'})
-    .then(function(throws){
-      res.send(throws);
-      return next();
-    })
-    .catch(function(err){
-      console.log('Could not get throws:\n%s.',err.stack);
-      next(err);
-    });
-}
+//function getThrows(req,res,next){
+//  collections.throw
+//    .find({where:{},sort:'createdAt ASC'})
+//    .then(function(throws){
+//      res.send(throws);
+//      return next();
+//    })
+//    .catch(function(err){
+//      console.log('Could not get throws:\n%s.',err.stack);
+//      next(err);
+//    });
+//}
 
 function postThrow(req,res,next){
   if(req.body.playerThrow){
     req.body.playerThrow=req.body.playerThrow.toLowerCase();
   }
-  shoot({thro:req.body})
+  req.body.playerId=req.user.id;
+  req.body.playerSession=req.user.session;
+  shoot({thro:req.body,bearerToken:req.user.session})
+    .then(stats.update)
     .then(function(options){
       res.send(options.thro);
       return next();
@@ -65,7 +70,7 @@ function initialize(options){
     //   without a server.
     if(options.server){
       options.server.head('/api/throw',head);
-      options.server.get('/api/throw',getThrows);
+      //options.server.get('/api/throw',getThrows);
       options.server.post('/api/throw',postThrow);
     }
     resolve(options);

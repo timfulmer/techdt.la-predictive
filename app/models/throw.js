@@ -59,8 +59,12 @@ function loadCollection(options){
         attributes: {
           playerThrow:{type:'string',required:true,in:roshambo},
           playerType:{type:'string',in:playerTypes,defaultsTo:'human'},
+          playerId:{type:'string',required:true},
+          playerSession:{type:'string',required:true},
           opponentThrow:{type:'string',in:roshambo},
           opponentType:{type:'string',in:playerTypes,defaultsTo:'machine'},
+          opponentId:{type:'string'},
+          opponentSession:{type:'string'},
           outcome:{type:'string',in:outcomes},
           orderBy:{type:'integer'},
           roshambo:function(){

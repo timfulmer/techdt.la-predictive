@@ -12,11 +12,11 @@ var Waterline=require('waterline'),
     connections:{
       localhostMongo:{
         adapter:'mongo',
-        host:'ds035573.mongolab.com',
-        port:35573,
-        user:'jswla',
-        password:'jswla',
-        database:'jswla'
+        host:'ds037234.mongolab.com',
+        port:37234,
+        user:'nthrows',
+        password:'nthrows',
+        database:'nthrows'
       }
     }
   },

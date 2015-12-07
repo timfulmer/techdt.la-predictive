@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Created by timfulmer on 7/5/15.
  */
@@ -7,8 +8,16 @@ var restify=require('restify'),
   controllersPath=require('path').join(__dirname,'../app/controllers');
 
 function authorizeRedirectUrl(req,res,done){
-  var scope=req.authInfo.scope;
-  if(scope.indexOf(req.headers.host)===-1 || scope.indexOf(req.url)===-1){
+  var scopes=req.authInfo.scope,
+    found=false;
+  scopes.some(function(scope){
+    if(scope.indexOf(req.headers.host)>-1 || scope.endsWith(req.url)){
+      found=true;
+      return true;
+    }
+    return false;
+  });
+  if(!found){
     res.send(401,'Unauthorized');
   }
   done();

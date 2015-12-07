@@ -5,64 +5,66 @@ var waterline=require('../config/waterline'),
   throws=require('../app/controllers/throw'),
   Promise=require('bluebird'),
   fs=require('fs'),
-  Throw=void 0;
+  Throw=void 0,
+  playerId='prs001@mailinator.com',
+  playerSession='session002';
 
 function populateThrows(){
   var p=[],i,count=10,order=0;
   for(i=0;i<count;i++){
-    p.push(throws.shoot({thro:{playerThrow:'rock',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'rock',playerType:'machine',orderBy:order++}}));
   }
   for(i=0;i<count;i++){
-    p.push(throws.shoot({thro:{playerThrow:'paper',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'paper',playerType:'machine',orderBy:order++}}));
   }
   for(i=0;i<count;i++){
-    p.push(throws.shoot({thro:{playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
   }
   for(i=0;i<count;i++){
-    p.push(throws.shoot({thro:{playerThrow:'paper',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'paper',playerType:'machine',orderBy:order++}}));
   }
   for(i=0;i<count;i++){
-    p.push(throws.shoot({thro:{playerThrow:'rock',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'rock',playerType:'machine',orderBy:order++}}));
   }
   for(i=0;i<count;i++){
-    p.push(throws.shoot({thro:{playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
   }
   for(i=0;i<count;i++){
-    p.push(throws.shoot({thro:{playerThrow:'paper',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'paper',playerType:'machine',orderBy:order++}}));
   }
   for(i=0;i<count;i++){
-    p.push(throws.shoot({thro:{playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
   }
   for(i=0;i<count;i++){
-    p.push(throws.shoot({thro:{playerThrow:'rock',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'rock',playerType:'machine',orderBy:order++}}));
   }
   for(i=0;i<count;i++){
-    p.push(throws.shoot({thro:{playerThrow:'paper',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'paper',playerType:'machine',orderBy:order++}}));
   }
   for(i=0;i<count;i++){
-    p.push(throws.shoot({thro:{playerThrow:'rock',playerType:'machine',orderBy:order++}}));
-    p.push(throws.shoot({thro:{playerThrow:'paper',playerType:'machine',orderBy:order++}}));
-    p.push(throws.shoot({thro:{playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'rock',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'paper',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
   }
   for(i=0;i<count;i++){
-    p.push(throws.shoot({thro:{playerThrow:'paper',playerType:'machine',orderBy:order++}}));
-    p.push(throws.shoot({thro:{playerThrow:'rock',playerType:'machine',orderBy:order++}}));
-    p.push(throws.shoot({thro:{playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'paper',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'rock',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
   }
   for(i=0;i<count;i++){
-    p.push(throws.shoot({thro:{playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
-    p.push(throws.shoot({thro:{playerThrow:'rock',playerType:'machine',orderBy:order++}}));
-    p.push(throws.shoot({thro:{playerThrow:'paper',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'rock',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'paper',playerType:'machine',orderBy:order++}}));
   }
   for(i=0;i<count;i++){
-    p.push(throws.shoot({thro:{playerThrow:'rock',playerType:'machine',orderBy:order++}}));
-    p.push(throws.shoot({thro:{playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
-    p.push(throws.shoot({thro:{playerThrow:'paper',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'rock',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'paper',playerType:'machine',orderBy:order++}}));
   }
   for(i=0;i<count;i++){
-    p.push(throws.shoot({thro:{playerThrow:'paper',playerType:'machine',orderBy:order++}}));
-    p.push(throws.shoot({thro:{playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
-    p.push(throws.shoot({thro:{playerThrow:'rock',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'paper',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'scissors',playerType:'machine',orderBy:order++}}));
+    p.push(throws.shoot({thro:{playerId:playerId,playerSession:playerSession,playerThrow:'rock',playerType:'machine',orderBy:order++}}));
   }
   return Promise.all(p);
 }
@@ -105,17 +107,15 @@ function writeCsv(options){
   return new Promise(writeCsvPromise);
 }
 
-waterline.initialize()
+waterline()
   .then(function(options) {
-    if (!options.collections || !options.collections['Throw']) {
+    if (!options.collections || !options.collections['throw']) {
       throw new Error('Could not access Throw data.');
     }
-    Throw=options.collections['Throw'];
+    Throw=options.collections['throw'];
     return options;
   })
-  .then(function(options){
-    return throws.initialize(options);
-  })
+  .then(throws)
   .then(function(){
     return Throw.destroy({});
   })

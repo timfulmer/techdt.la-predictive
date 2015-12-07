@@ -31,6 +31,9 @@ function randomShot(options){
 }
 function machineShot(options){
   function machineShotPromise(resolve,reject){
+    if(!options.machineShot){
+      resolve(options);
+    }
     var params = {
       MLModelId:'ml-lE1XXsytaka',
       PredictEndpoint:'https://realtime.machinelearning.us-east-1.amazonaws.com',
